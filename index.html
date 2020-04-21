@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChatBot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <h4 id='mainHeader'>Kalkulator</h4>
+      <div id='output'></div>
+      <form onsubmit="return calculate()" name="calcForm">
+        <div class="form-group mb-3 mt-4">
+          <input type="number" name="num1" id="num1" class="form-control" placeholder="Podaj pierwszą liczbę" autofocus autocomplete="off" />
+        </div>
+        <div class="form-group mb-3 mt-4">
+          <input type="number" name="num2" id="num2" class="form-control" placeholder="Podaj drugą liczbę" autocomplete="off" />
+        </div>
+        <div class="form-group mb-3 mt-4">
+          <label for="dzialanie">Wybierz typ działania:</label>
+          <select name="dzialanie" id="dzialanie" class="form-control">
+            <option value="+">Dodawanie</option>
+            <option value="-">Odejmowaie</option>
+            <option value="/">Dzielenie</option>
+            <option value="*">Mnożenie</option>
+            <option value="sm">Średnia arytmetyczna - Po wybraniu tej opcji będzie trzeba podać osobno liczby</option>
+          </select>
+        </div>
+        <input type="submit" class="btn btn-primary" />
+      </form>
+    </div>
+    <script src='js/calc.js'></script>
+  </body>
+</html>
