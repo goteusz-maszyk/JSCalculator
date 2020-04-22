@@ -1,4 +1,7 @@
 function calculate() {
+  let encrypted = []
+  let decrypted = []
+  let encryptedText
   let output
   let num1 = Number(document.forms["calcForm"]["num1"].value);
   let num2 = Number(document.forms["calcForm"]["num2"].value);
@@ -28,10 +31,26 @@ function calculate() {
         break
       }
     }
+  } else if(dzialanie == 'qwerty+1') {
+    text = prompt('Podaj tekst do szyfrowania')
+    for(i=0; i<text.length; i++) {
+      encrypted.push(encryptitons[text[i]])
+    }
+    encryptedText = encrypted.join('')
+  } else if(dzialanie == 'qwerty-1') {
+    text = prompt('Podaj tekst do deszyfrowania')
+    for(i=0; i<text.length; i++) {
+      decrypted.push(decryptitons[text[i]])
+    }
+    decryptedText = decrypted.join('')
   }
   if(isNaN(output) || output == undefined) { output = 0 }
   if(dzialanie == 'sm') {
     $('#output').text('Średnia matematyczna z: ' + liczby + ' = ' + output);
+  } else if(dzialanie == 'qwerty+1') {
+    $('#output').text(encryptedText)
+  } else if(dzialanie == 'qwerty-1') {
+    $('#output').text(decryptedText)
   } else {
     $('#output').text(num1 + ' ' + dzialanie + ' ' + num2 + ' = ' + output);
   }
