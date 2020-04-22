@@ -11,6 +11,8 @@ function calculate() {
     output = num1 / num2
   } else if(dzialanie == '*') {
     output = num1 * num2
+  } else if (dzialanie == 'mod') {
+    output = num1 % num2
   } else if(dzialanie == 'sm') {
     output = 0
     alert('Wyliczasz średnią arytmetyczną')
@@ -28,6 +30,10 @@ function calculate() {
     }
   }
   if(isNaN(output) || output == undefined) { output = 0 }
-  $('#output').text('Wynik: ' + output);
+  if(dzialanie == 'sm') {
+    $('#output').text('Średnia matematyczna z: ' + liczby + ' = ' + output);
+  } else {
+    $('#output').text(num1 + ' ' + dzialanie + ' ' + num2 + ' = ' + output);
+  }
   return false
 }
