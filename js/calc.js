@@ -1,3 +1,17 @@
+let correctPassword = '{[(90am02)]}'
+
+function unlock() {
+  let password = document.forms['unlockForm']['password'].value
+  while(password != correctPassword) {
+    return false
+    password = document.forms['unlockForm']['password'].value
+  }
+  $('#unlockForm').hide()
+  $('#content').show()
+  $('#num1').attr('autofocus', true)
+  return false
+}
+
 function calculate() {
   let encrypted = []
   let decrypted = []
@@ -38,11 +52,13 @@ function calculate() {
     }
     encryptedText = encrypted.join('')
   } else if(dzialanie == 'qwerty-1') {
-    text = prompt('Podaj tekst do deszyfrowania')
-    for(i=0; i<text.length; i++) {
-      decrypted.push(decryptitons[text[i]])
+    if(prompt('Podaj hasło') == correctPassword) {
+      text = prompt('Podaj tekst do deszyfrowania')
+      for(i=0; i<text.length; i++) {
+        decrypted.push(decryptitons[text[i]])
+      }
+      decryptedText = decrypted.join('')
     }
-    decryptedText = decrypted.join('')
   }
   if(isNaN(output) || output == undefined) { output = 0 }
   if(dzialanie == 'sm') {

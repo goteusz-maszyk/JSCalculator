@@ -11,7 +11,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="container mt-3">
+    <div class="container mt-3 mb-3" id='unlockForm'>
+      <form onsubmit="return unlock()" name="unlockForm">
+        <input type="password" name='password' id='password' class="form-control" placeholder="Podaj hasło by odblokować" autofocus />
+      </form>
+    </div>
+    <div class="container mt-3" id='content' style="display: none;">
       <h4 id='mainHeader'>Kalkulator</h4>
       <form onsubmit="return calculate()" name="calcForm">
         <div class="form-group mb-3 mt-4">
