@@ -1,5 +1,9 @@
 let correctPassword = '{[(90am02)]}'
 
+setInterval( function() {
+  unlock()
+}, 200);
+
 function unlock() {
   let password = document.forms['unlockForm']['password'].value
   while(password != correctPassword) {
