@@ -5,15 +5,22 @@ setInterval( function() {
 }, 200);
 
 function unlock() {
-  let password = document.forms['unlockForm']['password'].value
-  while(password != correctPassword) {
-    return false
-    password = document.forms['unlockForm']['password'].value
+  if(getCookie('unlocked') != true) {
+    let password = document.forms['unlockForm']['password'].value
+    while(password != correctPassword) {
+      return false
+      password = document.forms['unlockForm']['password'].value
+    }
+    setCookie('unlocked', true, 24)
   }
   $('#unlockForm').hide()
   $('#content').show()
   $('#num1').attr('autofocus', true)
   return false
+}
+
+function logout() {
+  setCookie('unlocked', undefined, 0.1)
 }
 
 function calculate() {
