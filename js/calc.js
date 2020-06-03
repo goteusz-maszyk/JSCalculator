@@ -1,26 +1,42 @@
 let correctPassword = '{[(90am02)]}'
-
+console.log('Uwaga! Jeśli dostałeś od kogoś kod do wklejenia tu, nie rób tego. Twój komputer może zostać zhakowany!')
+console.error("mały żarcik :)")
+console.warn("Hiehie")
 setInterval( function() {
   unlock()
 }, 200);
 
+function hideAlert() {
+  $('.alert').slideUp(1500)
+}
+
 function unlock() {
-  if(getCookie('unlocked') != true) {
+  if(sessionStorage.getItem('unlocked') != "true") {
     let password = document.forms['unlockForm']['password'].value
     while(password != correctPassword) {
       return false
       password = document.forms['unlockForm']['password'].value
     }
-    setCookie('unlocked', true, 24)
+    sessionStorage.setItem('unlocked', true)
   }
-  $('#unlockForm').hide()
-  $('#content').show()
+  $('#unlockForm').slideUp(2000)
+  $('#content').delay(1500).fadeIn(2000)
   $('#num1').attr('autofocus', true)
   return false
 }
 
 function logout() {
   setCookie('unlocked', undefined, 0.1)
+}
+
+const changeSubmitBtnContent = function() {
+  if(document.forms.calcForm.dzialanie.value == "encrypt") {
+    $('#submitBtn').text("Zaszyfruj").attr("title", "")
+  } else if(document.forms.calcForm.dzialanie.value == "decrypt") {
+    $('#submitBtn').text("Deszyfruj").attr("title", "Deszyfrowanie wymaga hasła")
+  } else {
+    $('#submitBtn').text("Policz!").attr("title", "")
+  }
 }
 
 function calculate() {
@@ -56,13 +72,13 @@ function calculate() {
         break
       }
     }
-  } else if(dzialanie == 'qwerty+1') {
+  } else if(dzialanie == 'encrypt') {
     text = prompt('Podaj tekst do szyfrowania')
     for(i=0; i<text.length; i++) {
       encrypted.push(encryptitons[text[i]])
     }
     encryptedText = encrypted.join('')
-  } else if(dzialanie == 'qwerty-1') {
+  } else if(dzialanie == 'decrypt') {
     if(prompt('Podaj hasło') == correctPassword) {
       text = prompt('Podaj tekst do deszyfrowania')
       for(i=0; i<text.length; i++) {
