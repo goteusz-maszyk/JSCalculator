@@ -5,3 +5,7 @@
 select {
   cursor: pointer;
 }
+
+#content {
+  margin: auto 10vw;
+}
