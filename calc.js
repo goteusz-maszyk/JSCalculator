@@ -21,8 +21,10 @@ document.querySelector("#calcForm").addEventListener('submit', (e) => {
   let encrypted = []
   let decrypted = []
   let output
-  let num1 = Number(document.forms["calcForm"]["num1"].value);
-  let num2 = Number(document.forms["calcForm"]["num2"].value);
+  const num1 = Number(document.forms["calcForm"]["num1"].value);
+  const num2 = Number(document.forms["calcForm"]["num2"].value);
+  let encryptionOffset = Number(document.forms["calcForm"]["encryption-offset"].value);
+  if(encryptionOffset <= 0) encryptionOffset = 1
   let text = document.forms["calcForm"]["text"].value;
   let dzialanie = document.forms["calcForm"]["dzialanie"].value;
   if(dzialanie == '+') {
@@ -52,15 +54,13 @@ document.querySelector("#calcForm").addEventListener('submit', (e) => {
       }
     }
   } else if(dzialanie == 'encrypt') {
-    // text = prompt('Podaj tekst do szyfrowania')
     for(i=0; i<text.length; i++) {
-      encrypted.push(String.fromCharCode(text.charCodeAt(i) + 1))
+      encrypted.push(String.fromCharCode(text.charCodeAt(i) + encryptionOffset))
     }
     output = encrypted.join('')
   } else if(dzialanie == 'decrypt') {
-    // text = prompt('Podaj tekst do deszyfrowania')
     for(i=0; i<text.length; i++) {
-      decrypted.push(String.fromCharCode(text.charCodeAt(i) - 1))
+      decrypted.push(String.fromCharCode(text.charCodeAt(i) - encryptionOffset))
     }
     output = decrypted.join('')
   }
